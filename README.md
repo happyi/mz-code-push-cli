@@ -1,3 +1,3 @@
 ### add plugin
 
-cordova plugin add  https://github.com/happyi/mz-code-push-cli.git
+npm install -g  https://github.com/happyi/mz-code-push-cli.git
