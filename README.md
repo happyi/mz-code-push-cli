@@ -1,2 +1,3 @@
-# mz-code-push-cli
-基于cordova-hot-code-push-cli
+### add plugin
+
+cordova plugin add  https://github.com/happyi/mz-code-push-cli.git
