@@ -6,7 +6,7 @@
     crypto = require('crypto'),
     Q = require('q'),
     _ = require('lodash'),
-    createHash = require('crypto').createHash,
+    createHash = require('crypto').createHash('md5'),
     recursive = require('recursive-readdir'),
     hidefile = require('hidefile'),
     chcpContext;
