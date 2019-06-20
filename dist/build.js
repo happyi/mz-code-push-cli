@@ -75,7 +75,10 @@
     try {
       config = fs.readFileSync(context.defaultConfig, 'utf8');
       config = JSON.parse(config);
-      config = context.argv.prod ? config.prod : config.test;
+      config = context.argv.test;
+      if(context.argv.dev) config = context.argv.dev;
+      if(context.argv.prod) config = context.argv.prod;
+    
       config.release = process.env.VERSION || calculateTimestamp();
     } catch (e) {
       config = {
