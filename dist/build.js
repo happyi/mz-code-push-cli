@@ -2,13 +2,11 @@
 
 (function () {
   var path = require('path'),
-      prompt = require('prompt'),
       fs = require('fs-extra'),
       async = require('async'),
       crypto = require('crypto'),
       Q = require('q'),
       _ = require('lodash'),
-      createHash = require('crypto').createHash,
       recursive = require('recursive-readdir'),
       hidefile = require('hidefile'),
       chcpContext;
@@ -75,10 +73,11 @@
     try {
       config = fs.readFileSync(context.defaultConfig, 'utf8');
       config = JSON.parse(config);
-     
-      if(context.argv.dev) config = config.dev;
-      if(context.argv.test) config = config.test;
-      if(context.argv.prod) config = config.prod;
+
+      if (context.argv.dev) config = config.dev;
+      if (context.argv.test) config = config.test;
+      if (context.argv.prod) config = config.prod;
+
       config.release = process.env.VERSION || calculateTimestamp();
     } catch (e) {
       config = {
@@ -99,8 +98,6 @@
     var hash = crypto.createHash('md5'),
         stream = fs.createReadStream(filename);
 
-    //stream.pipe(writeStream);
-    //console.log('Hashing: ', filename);
     stream.on('data', function (data) {
       hash.update(data, 'utf8');
     });
