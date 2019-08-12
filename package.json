@@ -43,7 +43,8 @@
     "prompt": "^0.2.14",
     "q": "^1.4.1",
     "readdirp": "^2.0.0",
-    "recursive-readdir": "^2.0.0"
+    "recursive-readdir": "^2.0.0",
+    "yargs": "^3.16.1"
   },
   "devDependencies": {
     "babel": "^5.8.19",
