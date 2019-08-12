@@ -3,7 +3,7 @@
 npm install -g  https://github.com/happyi/mz-code-push-cli.git
 
 配置样例
-``
+```
 {
   "prod":{
     "name": "yiren-ylh",
@@ -20,11 +20,11 @@ npm install -g  https://github.com/happyi/mz-code-push-cli.git
       "content_url": "http://ylh-test.mezeron.cn/yiren"
   }
 }
-``
+```
 
 环境切换
-``
+```
 mz-hcp build --dev
 mz-hcp build --test
 mz-hcp build --prod
-``
+```
