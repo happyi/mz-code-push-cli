@@ -10,45 +10,46 @@ var originalPromise = Promise;
 Promise._setScheduler((flush) => flush());
 
 function MockPromise(func) {
-  var status = {
-    resolve (data) {
-      status.data = data;
-      status.resolved = true
-    },
-    rejected (data) {
-      status.data = data;
-      status.rejected = true;
-    }
-  };
-  func(status.resolve, status.reject);
+    var status = {
+        resolve(data) {
+            status.data = data;
+            status.resolved = true
+        },
+        rejected(data) {
+            status.data = data;
+            status.rejected = true;
+        }
+    };
+    func(status.resolve, status.reject);
 
-  function resolver(data) {
+    function resolver(data) {
+        return {
+            then(cb) {
+                var tmp = cb(data);
+                return resolver(tmp);
+            }
+        }
+    }
+
     return {
-      then(cb) {
-        var tmp = cb(data);
-        return resolver(tmp);
-      }
+        then(success, fail) {
+            if (status.resolved) {
+                var val = success(status.data)
+                return resolver(val);
+            } else {
+                fail(status.data)
+            }
+        }
     }
-  }
-  return {
-    then(success, fail) {
-      if (status.resolved) {
-        var val = success(status.data)
-        return resolver(val);
-      } else {
-        fail(status.data)
-      }
-    }
-  }
 }
 
 MockPromise.orignalPromise = Promise;
-MockPromise.replace = function() {
-  global.Promise = MockPromise;
+MockPromise.replace = function () {
+    global.Promise = MockPromise;
 };
 
-MockPromise.restore = function() {
-  global.Promise = originalPromise;
+MockPromise.restore = function () {
+    global.Promise = originalPromise;
 }
 
 global.MockPromise = MockPromise;
