@@ -38,7 +38,7 @@
     "es6-promise": "^2.3.0",
     "fs-extra": "^0.22.1",
     "hidefile": "^1.1.0",
-    "lodash": "^3.10.0",
+    "lodash": "^4.17.20",
     "minimatch": "^3.0.0",
     "prompt": "^0.2.14",
     "q": "^1.4.1",
